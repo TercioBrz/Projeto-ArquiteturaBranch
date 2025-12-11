@@ -9,8 +9,8 @@ def pathabs2(*partes):
 class Balas(pygame.sprite.Sprite):
 
     STATIC = {
-        "dardo": "images/arana/dardo/dardo.png",
-        "flecha": "images/arana/flecha/dardo.png"
+        "dardo": "assets/images/arana/dardo/dardo.png",
+        "flecha": "assets/images/arana/flecha/dardo.png"
     }
 
     def __init__(self,x,y,direcao,tela):

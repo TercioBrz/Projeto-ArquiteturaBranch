@@ -22,21 +22,6 @@ class Vilao(pygame.sprite.Sprite):
         self.carregar_animacoes(escala)
 
         
-        #sprites obsoleto
-        lista_temporaria = []
-        for c in range (3):
-            imagem = pygame.image.load(pathabs6(f'images/{self.nome_pasta}/obsoleto/{c}.png'))
-            imagem = pygame.transform.scale(imagem, (int(imagem.get_width() * escala), int(imagem.get_height() * escala)) )
-            lista_temporaria.append(imagem)
-        self.lista_animacoes.append(lista_temporaria)
-
-        #sprites dele lancando magia 
-        lista_temporaria = []
-        for c in range (4):
-            imagem = pygame.image.load(pathabs6(f'images/{self.nome_pasta}/lancar_magia/{c}.png'))
-            imagem = pygame.transform.scale(imagem, (int(imagem.get_width() * escala), int(imagem.get_height() * escala)) )
-            lista_temporaria.append(imagem)
-        self.lista_animacoes.append(lista_temporaria)
 
         self.img = self.lista_animacoes[self.acao][self.indice_frame]
         self.rect = self.img.get_rect()
@@ -78,12 +63,24 @@ class Vilao(pygame.sprite.Sprite):
             if self.vida <= 0:
                 self.vivo = False
 
+#============================================================================================================
+
     def carregar_animacoes(self, escala):
 
-        for c in range(3):
-            imagem = pygame.image.load(pathabs6(f'images/projeteis/{self.nome_pasta}/{c}.png'))
-            imagem = pygame.transform.scale(imagem,
-            (int(imagem.get_width() * escala), int(imagem.get_height() * escala)))
-            self.lista_animacoes.append(imagem)
+        #sprites obsoleto
+        lista_temporaria = []
+        for c in range (3):
+            imagem = pygame.image.load(pathabs6(f'assets/images/{self.nome_pasta}/obsoleto/{c}.png'))
+            imagem = pygame.transform.scale(imagem, (int(imagem.get_width() * escala), int(imagem.get_height() * escala)) )
+            lista_temporaria.append(imagem)
+        self.lista_animacoes.append(lista_temporaria)
+
+        #sprites dele lancando magia 
+        lista_temporaria = []
+        for c in range (4):
+            imagem = pygame.image.load(pathabs6(f'assets/images/{self.nome_pasta}/lancar_magia/{c}.png'))
+            imagem = pygame.transform.scale(imagem, (int(imagem.get_width() * escala), int(imagem.get_height() * escala)) )
+            lista_temporaria.append(imagem)
+        self.lista_animacoes.append(lista_temporaria)
 
 #============================================================================================================

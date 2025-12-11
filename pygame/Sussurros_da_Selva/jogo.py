@@ -23,15 +23,15 @@ def pathabs4(*partes):
 tela = pygame.display.set_mode((LARGURA,ALTURA))
 pygame.display.set_caption("Sussuros da Selva")
 
-cenario_fase1 = pygame.image.load(pathabs4("images/fundo/background_chat.png"))
+cenario_fase1 = pygame.image.load(pathabs4("assets/images/fundo/background_chat.png"))
 
-barra_vida_arana = pygame.image.load(pathabs4("images/hud/tronco/0.png"))
+barra_vida_arana = pygame.image.load(pathabs4("assets/images/hud/tronco/0.png"))
 barra_vida_arana = pygame.transform.scale(barra_vida_arana, (300,200))
 
-ponto_de_vida = pygame.image.load(pathabs4("images/hud/folha/1.png"))
+ponto_de_vida = pygame.image.load(pathabs4("assets/images/hud/folha/1.png"))
 ponto_de_vida = pygame.transform.scale(ponto_de_vida, (250,150))
 
-ponto_de_vida_nulo = pygame.image.load(pathabs4("images/hud/folha/0.png"))
+ponto_de_vida_nulo = pygame.image.load(pathabs4("assets/images/hud/folha/0.png"))
 ponto_de_vida_nulo = pygame.transform.scale(ponto_de_vida_nulo, (250,150))
 
 #------------------------- Carregamento de sons ----------------------------------
@@ -45,7 +45,7 @@ click.set_volume(0.6)
 dardo = pygame.mixer.Sound(pathabs4("assets/sounds/dardo.wav"))
 dardo.set_volume(0.6)
 
-grito_curupira = pygame.mixer.Sound(pathabs4("assets/gritos/grito_magia_fogo.wav"))
+grito_curupira = pygame.mixer.Sound(pathabs4("assets/sounds/gritos/grito_magia_fogo.wav"))
 grito_curupira.set_volume(0.15)
 
 def tocar_som(som):
@@ -56,7 +56,7 @@ def tocar_som(som):
 
 arana = Arana('Arana',X_ARANA,Y_ARANA,2,CHAO_Y,LARGURA, 3)
 
-bola1 = Magias('bola_de_fogo',1400, 280, 2.5, 10, tela )   #parametros : nome pasta de images, pos x, po y, escala, velocidade
+bola1 = Magias('bola_de_fogo',1400, 280, 2.5, 10, tela )   #parametros : nome pasta de assets/images, pos x, po y, escala, velocidade
 bola2 = Magias('bola_de_fogo',1400, 590, 2.5, 10, tela )
 
 rato = Inimigos('rato',-200, 613, 0.4, 7, 'direita', tela )         
@@ -83,6 +83,10 @@ def resetar_fase1():
 
     tempo_congelado = False
     tempo_fase1 = pygame.time.get_ticks()
+
+
+    arana = Arana('Arana',X_ARANA,Y_ARANA,2,CHAO_Y,LARGURA, 3)
+    curupira = Vilao('curupira', X_CURUPIRA, Y_CURUPIRA, 1.7, tela)
 
     #recriar personagens
     capivara = Inimigos('capivara', 1300, 592, 2.5, 6.5,'esquerda', tela)
@@ -117,7 +121,7 @@ def resetar_fase1():
     time_inicio_estado = tempo_fase1
 
 def intro():
-    pasta_frames = pathabs4('images','intro')
+    pasta_frames = pathabs4('assets/images','intro')
     fps = 20
 
     frames = []
@@ -149,7 +153,7 @@ def intro():
         clock.tick(fps)
 
 def submenu():
-    pasta_frames = pathabs4('images','submenu')
+    pasta_frames = pathabs4('assets/images','submenu')
     fps = 25
 
     frames = []
@@ -186,7 +190,7 @@ def submenu():
         clock.tick(fps)
 
 def menu():
-    pasta_frames = pathabs4('images','menu')
+    pasta_frames = pathabs4('assets/images','menu')
     fps = 25
 
     frames = []
@@ -203,9 +207,9 @@ def menu():
 
     while True:
 
-        jogar = pygame.desenhar.rect(tela,'white',(538,385,205,57))
-        tutorial_e_dicas = pygame.desenhar.rect(tela,'white',(538,469,205,57))
-        sair = pygame.desenhar.rect(tela,'white',(538,551,205,57))
+        jogar = pygame.draw.rect(tela,'white',(538,385,205,57))
+        tutorial_e_dicas = pygame.draw.rect(tela,'white',(538,469,205,57))
+        sair = pygame.draw.rect(tela,'white',(538,551,205,57))
 
         for event in pygame.event.get():
             if event.type == QUIT:
@@ -243,20 +247,20 @@ def menu():
         clock.tick(fps)
 
 def tutorial_1():
-    img = pygame.image.load(pathabs4('images', 'tutorial', '1.png'))
-    arana_correndo = pygame.image.load(pathabs4('images', 'arana', 'arana_correndo', '1.png'))
+    img = pygame.image.load(pathabs4('assets/images', 'tutorial', '1.png'))
+    arana_correndo = pygame.image.load(pathabs4('assets/images', 'arana', 'arana_correndo', '1.png'))
     arana_correndo = pygame.transform.scale(arana_correndo, (125,170))
-    arana_pulando = pygame.image.load(pathabs4('images', 'arana', 'arana_pulando', '3.png'))
+    arana_pulando = pygame.image.load(pathabs4('assets/images', 'arana', 'arana_pulando', '3.png'))
     arana_pulando = pygame.transform.scale(arana_pulando, (125,163))
-    arana_atirando = pygame.image.load(pathabs4('images', 'arana', 'arana_atirando_parado', '0.png'))
+    arana_atirando = pygame.image.load(pathabs4('assets/images', 'arana', 'arana_atirando_parado', '0.png'))
     arana_atirando = pygame.transform.scale(arana_atirando, (125,163))
 
 
 
     while True:
 
-        sair = pygame.desenhar.rect(tela,'white',(910,651,149,37))
-        proximo = pygame.desenhar.rect(tela,'white',(1089,651,149,37))
+        sair = pygame.draw.rect(tela,'white',(910,651,149,37))
+        proximo = pygame.draw.rect(tela,'white',(1089,651,149,37))
 
         for event in pygame.event.get():
             if event.type == QUIT:
@@ -281,13 +285,13 @@ def tutorial_1():
         pygame.display.flip()
 
 def tutorial_2():
-    img = pygame.image.load(pathabs4('images', 'tutorial', '2.png'))
+    img = pygame.image.load(pathabs4('assets/images', 'tutorial', '2.png'))
     capivara_tutorial = Inimigos('capivara', LARGURA/2 , ALTURA/2 , 4, 0,'esquerda', tela)
 
     while True:
         
-        sair = pygame.desenhar.rect(tela,'white',(910,651,149,37))
-        voltar = pygame.desenhar.rect(tela,'white',(1089,651,149,37))
+        sair = pygame.draw.rect(tela,'white',(910,651,149,37))
+        voltar = pygame.draw.rect(tela,'white',(1089,651,149,37))
 
         for event in pygame.event.get():
             if event.type == QUIT:
@@ -358,7 +362,7 @@ while True:
         segundos = int(tempo_restante % 60)
         texto_tempo = f"{minutos:02d}:{segundos:02d}"
 
-        fonte_cronometro = pygame.font.Font(pathabs4("fonts/PressStart2P.ttf"), 35)
+        fonte_cronometro = pygame.font.Font(pathabs4("assets/fonts/PressStart2P.ttf"), 35)
         texto_cronometro = fonte_cronometro.render(texto_tempo, True, (255,255,255))
         tela.blit(texto_cronometro, (600, 110))
 
@@ -539,7 +543,7 @@ while True:
 #------------------------------ GAME OVER ---------------------------------------------------------
 
     elif estado == "game over":
-        game_over = pygame.image.load(pathabs4('images', 'fundo', 'game over.png'))
+        game_over = pygame.image.load(pathabs4('assets/images', 'fundo', 'game over.png'))
         tela.blit(game_over, (0,0))
 
         for event in pygame.event.get():
@@ -552,8 +556,8 @@ while True:
                 estado = "menu"
 
     elif estado == 'vitoria':
-        sair = pygame.desenhar.rect(tela,'white',(1065,631,148,37))
-        vitoria = pygame.image.load(pathabs4('images', 'fundo', 'vitoria.png'))
+        sair = pygame.draw.rect(tela,'white',(1065,631,148,37))
+        vitoria = pygame.image.load(pathabs4('assets/images', 'fundo', 'vitoria.png'))
         tela.blit(vitoria, (0,0))
 
         for event in pygame.event.get():

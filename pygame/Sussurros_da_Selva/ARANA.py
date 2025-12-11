@@ -60,7 +60,7 @@ class Arana(pygame.sprite.Sprite):
         for pasta, quantidade in animacoes:
             frames = []
             for i in range(quantidade):
-                caminho = pathabs(f'images/arana/{pasta}/{i}.png')
+                caminho = pathabs(f'assets/images/arana/{pasta}/{i}.png')
                 imagem = pygame.image.load(caminho)
                 imagem = pygame.transform.scale(
                     imagem,

@@ -22,7 +22,7 @@ class Magias(pygame.sprite.Sprite):
         self.tela = tela
 
         for c in range (self.quant_sprites):
-            imagem = pygame.image.load(pathabs5(f'images/projeteis/{self.nome_pasta}/{c}.png'))
+            imagem = pygame.image.load(pathabs5(f'assets/images/projeteis/{self.nome_pasta}/{c}.png'))
             imagem = pygame.transform.scale(imagem, (int(imagem.get_width() * escala), int(imagem.get_height() * escala)) )
             self.lista_animacoes.append(imagem)
 
